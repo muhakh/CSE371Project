@@ -10,7 +10,6 @@ class Comment(models.Model):
     updated = models.DateTimeField(auto_now=True)
     class Meta:
         abstract = True
-        app_label = "gallery"
     def __str__(self):
         return self.content
 
