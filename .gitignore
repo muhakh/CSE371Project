@@ -1,2 +1,5 @@
-#ignoring .idea
+
 .idea/
+__pycache__/
+models/__pycache__/
+migrations/
