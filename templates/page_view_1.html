@@ -1,0 +1,9 @@
+{% load staticfiles %}
+
+<h2>Pages</h2>
+<ul>
+  {%for page in object_list%}
+    <img src={{page.image.url}} alt="Mountain View" style="width:250px;height:250px;">
+  {% endfor %}
+
+</ul>
