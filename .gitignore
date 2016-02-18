@@ -1,10 +1,2 @@
-<<<<<<< HEAD
 *.pyc
 migrations/
-=======
-
-.idea/
-__pycache__/
-models/__pycache__/
-migrations/
->>>>>>> e679418aedcd635e495a85eed842ff403d1181eb

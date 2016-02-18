@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from .views import document
 from .views.subject import CreateSubject , UpdateSubject, DeleteSubject, DetailSubject, ListSubject
+from .views.page import PageList , PageDetail
+
 urlpatterns = [
 	url(r'^document/(?P<pk>\d+)/$', document.DocumentDetailView.as_view(), name='document_detail'),
 	url(r'^document/create/$', document.CreateDocumentView.as_view(), name='document_create'),
