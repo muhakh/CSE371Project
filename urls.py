@@ -17,4 +17,5 @@ urlpatterns = [
 
 	url(r'^all/$',PageList.as_view()),
 	url(r'^(?P<pk>\d+)/$',PageDetail.as_view()),
+	 url(r'^upload/$',views.upload),
 ]
