@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^subject/update/(?P<slug>[a-z0-9-]+)$', UpdateSubject.as_view(), name='update_subject'),
     url(r'^subject/delete/(?P<slug>[a-z0-9-]+)$', DeleteSubject.as_view(), name='delete_subject'),
     url(r'^subject/view/(?P<pk>\d+)/$', DetailSubject.as_view(), name='view_subject'),
+	url(r'^page/(?P<pk>\d+)/$', PageDetail.as_view(), name='page_detail'),
 ]
