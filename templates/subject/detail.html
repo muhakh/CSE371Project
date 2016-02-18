@@ -17,4 +17,7 @@
 {% else %}
   This Subject has no documents
 {% endif %}
+<p>
+  <a href="{% url 'project:document_create' %}">Add a new document</a>
+</p>
 {% endblock content %}

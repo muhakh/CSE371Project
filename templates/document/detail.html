@@ -10,7 +10,7 @@
 <ul>
   {% for page in view.pages %}
   <li>
-    <a href="#">
+    <a href="{% url 'project:page_detail' page.id %}">
       <img src="{{page.image.url}}" alt="" />
     </a>
   </li>
