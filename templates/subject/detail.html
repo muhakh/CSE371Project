@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+{{subject.title}}
+{% endblock title %}
+{% block content %}
+<h1>
+  {{subject.title}}
+</h1>
+{% if view.documents %}
+<ul>
+  {% for document in view.documents %}
+  <li>
+    <a href="{% url 'project:document_detail' document.id %}">{{document.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+  This Subject has no documents
+{% endif %}
+{% endblock content %}

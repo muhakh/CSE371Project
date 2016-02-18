@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Project CSE371
+{% endblock title %}
+{% block content %}
+<h1>
+  View the subject you want
+</h1>
+<ul>
+  {% for subject in subject_list %}
+  <li>
+    <a href="{% url 'project:view_subject' subject.id %}">{{subject.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
