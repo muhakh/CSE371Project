@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+{{document.title}}
+{% endblock title %}
+{% block content %}
+<h1>
+  {{document.title}}
+</h1>
+{% if view.pages %}
+<ul>
+  {% for page in view.pages %}
+  <li>
+    <a href="#">
+      <img src="{{page.image.url}}" alt="" />
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+  This Document has no pages
+{% endif %}
+{% endblock content %}
