@@ -1,1 +1,11 @@
-{{doucument}}
+{% extends "base.html" %}
+{% block title %}All documents{% endblock title %}
+{% block content %}
+  {% if document %}
+    {% for doc in document %}
+      {{doc.title}}
+    {% endfor %}
+  {% else %}
+    No
+  {% endif %}
+{% endblock content %}
