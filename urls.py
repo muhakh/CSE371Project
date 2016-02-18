@@ -1,19 +1,13 @@
 from django.conf.urls import url
-<<<<<<< HEAD
-from . import views
-urlpatterns = [
-	url(r'^mine/$',	views.document.ManageDocumentListView.as_view(), name='manage_document_list'),
-	url(r'^create/$', views.document.CreateDocumentView.as_view(),	name='document_create'),
-	url(r'^(?P<pk>\d+)/edit/$',	views.document.DocumentUpdateView.as_view(), name='document_edit'),
-	url(r'^(?P<pk>\d+)/delete/$', views.document.DocumentDeleteView.as_view(), name='document_delete'),
-=======
-from django.contrib import admin
+from .views import document
 from .views.subject import CreateSubject , UpdateSubject, DeleteSubject, ListSubject
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+	url(r'^mine/$',	document.ManageDocumentListView.as_view(), name='manage_document_list'),
+	url(r'^create/$', document.CreateDocumentView.as_view(),	name='document_create'),
+	url(r'^(?P<pk>\d+)/edit/$',	document.DocumentUpdateView.as_view(), name='document_edit'),
+	url(r'^(?P<pk>\d+)/delete/$', document.DocumentDeleteView.as_view(), name='document_delete'),
     url(r'^subject/create/$', CreateSubject.as_view(), name='create_subject'),
     url(r'^subject/update/(?P<slug>[a-z0-9-]+)$', UpdateSubject.as_view(), name='update_subject'),
     url(r'^subject/delete/(?P<slug>[a-z0-9-]+)$', DeleteSubject.as_view(), name='delete_subject'),
-    url(r'^subject/view/(?P<slug>[a-z0-9-]+)$', ListSubject.as_view(), name='view_subject')
->>>>>>> e679418aedcd635e495a85eed842ff403d1181eb
+    url(r'^subject/view/(?P<slug>[a-z0-9-]+)$', ListSubject.as_view(), name='view_subject'),
 ]

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from .subject import Subject
-# Create your models here.
+
 class Document(models.Model):
 	owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='doucument_owner')
 	subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='doucument_subject')
