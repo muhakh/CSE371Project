@@ -1,4 +1,6 @@
 from django.db import models
-
+from .document import Document
 class Page(models.Model):
-    pass
+    image = models.ImageField(upload_to='documents/%Y/%m/%d')
+    document = models.ForeignKey(Document)
+    likes_count = models.PositiveIntegerField()
