@@ -13,8 +13,8 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 
-class DocumentComment(models.Model):
+class DocumentComment(Comment):
     document = models.ForeignKey(Document)
 
-class PageComment(models.Model):
+class PageComment(Comment):
     page = models.ForeignKey(Page)
