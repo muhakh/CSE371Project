@@ -28,12 +28,12 @@ class ManageDocumentListView(OwnerDocumentMixin, ListView):
 	template_name = 'document/list.html'
 
 class CreateDocumentView(PermissionRequiredMixin, OwnerDocumentEditMixin, CreateView):
-	permission_required = 'gallery.add_document'
+	permission_required = 'CSE371Projectadd_document'
 
 class DocumentUpdateView(PermissionRequiredMixin, OwnerDocumentEditMixin, UpdateView):
-	permission_required = 'gallery.change_document'
+	permission_required = 'CSE371Projectchange_document'
 
 class DocumentDeleteView(PermissionRequiredMixin, OwnerDocumentMixin, DeleteView):
 	template_name = 'document/delete.html'
 	success_url = reverse_lazy('manage_document_list')
-	permission_required = 'gallery.delete_document'
+	permission_required = 'CSE371Projectdelete_document'
