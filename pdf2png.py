@@ -43,7 +43,7 @@ import os
                                      3- run os.path.abspath(os.getcwd())  this'll return the absolute path
 
 '''
-dir_abs_path="C:\\Users\\Muhammad Nashaat\\Desktop\\pdf-image\\media"
+dir_abs_path="C:\\Users\\Muhammad Nashaat\\Desktop\\pdf-image\\media"  # example
 
 # optional : set a different dir to save to
 # by default it will save to same dir of the pdf
@@ -58,7 +58,7 @@ def convert(pdf_name,resolution=72):
     src_pdf = PyPDF2.PdfFileReader(open(os.path.join(dir_abs_path,pdf_name+'.pdf'), "rb"))
     for i in range(src_pdf.getNumPages()):
         temp=pdf_page_to_png(src_pdf,i,resolution)
-        temp.save(filename=os.path.join(dir_abs_path,pdf_name+str(i)+'.png'))
+        temp.save(filename=os.path.join(save_abs_path,pdf_name+str(i)+'.png'))
 
 def pdf_page_to_png(src_pdf, pagenum = 0, resolution = 72,):
     '''
