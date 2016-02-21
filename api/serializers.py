@@ -4,9 +4,9 @@ from ..models.comment import DocumentComment, PageComment
 class PageCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PageComment
-        fields = ('id', 'content', 'page', 'owner')
+        fields = ('content', 'page', 'owner')
 
 class DocumentCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = DocumentComment
-        fields = ('id', 'content', 'document', 'owner')
+        fields = ('content', 'document', 'owner')

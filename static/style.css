@@ -1,0 +1,56 @@
+.header {
+  margin-top: 20px; }
+
+.main-form {
+  padding: 30px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  margin-top: 20px; }
+
+.slide-container {
+  background-color: #222;
+  color: #fff;
+  margin-top: 20px; }
+
+.slide-nav {
+  padding-top: 100px; }
+
+.slide-container header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #fff;
+  height: 60px;
+  margin-bottom: 5px; }
+
+.slide-container header h1 {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 0;
+  float: left; }
+
+.slide-container header a {
+  float: right;
+  margin-top: 12px; }
+
+.goto {
+  padding: 10px 0;
+  background-color: #222;
+  color: #fff;
+  overflow: hidden; }
+
+.goto input[type="text"] {
+  width: 50px;
+  color: #000; }
+
+.caption {
+  border-top: 1px solid #000; }
+
+.comments {
+  padding: 20px 0;
+  background-color: #f2f2f2; }
+
+.single-comment, .add-comment {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px; }
+
+/*# sourceMappingURL=style.css.map */

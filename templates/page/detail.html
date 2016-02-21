@@ -1,6 +1,20 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-
+{% block title %}
+{{page.document}} | Page {{page.id}}
+{% endblock title %}
+{% block content %}
 <h2>Pages</h2>
-<ul>
-    <img src={{page.image.url}} alt="Page {{page.id}}">
-</ul>
+<div class="">
+  <img src={{page.image.url}} alt="Page {{page.id}}">
+</div>
+{% for comment in page.pcomment.all  %}
+<h3>{{comment.owner.first_name}} {{comment.owner.last_name}}</h3>
+<p>{{comment.content}}</p>
+{% endfor %}
+{% endblock content %}
+{% block scripts %}
+<script type="text/javascript">
+  $.ajax();
+</script>
+{% endblock scripts %}

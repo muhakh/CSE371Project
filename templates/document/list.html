@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block title %}All documents{% endblock title %}
 {% block content %}
-  {% if document %}
-    {% for doc in document %}
-      {{doc.title}}
+<h1>My Documents</h1>
+  {% if document_list %}
+  <ul>
+    {% for doc in document_list %}
+      <li><a href="{% url 'project:document_detail' doc.id %}">{{doc.title}}</a></li>
     {% endfor %}
+  </ul>
   {% else %}
-    No
+    <p>You have no documents yet. </p>
+    <p>
+      <a href="{% url 'project:document_create' %}">Add new document</a>
+    </p>
   {% endif %}
 {% endblock content %}
