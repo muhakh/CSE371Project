@@ -3,3 +3,5 @@
 __pycache__/
 models/__pycache__/
 migrations/
+~$Report.docx
+*.tmp
