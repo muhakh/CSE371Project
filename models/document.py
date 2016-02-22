@@ -14,9 +14,7 @@ class Document(models.Model):
 	class Meta:
 		ordering = ('-created',)
 	def save(self):
-
 		self.slug = slugify(self.title)
 		super(Document, self).save()
-
 	def __str__(self):
 		return self.title

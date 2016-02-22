@@ -11,6 +11,7 @@
   {% for document in view.documents %}
   <li>
     <a href="{% url 'project:document_detail' document.id %}">{{document.title}}</a>
+    {{document.file.path}}
   </li>
   {% endfor %}
 </ul>

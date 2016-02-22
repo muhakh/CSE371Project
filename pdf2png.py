@@ -43,22 +43,23 @@ import os
                                      3- run os.path.abspath(os.getcwd())  this'll return the absolute path
 
 '''
-dir_abs_path="C:\\Users\\Muhammad Nashaat\\Desktop\\pdf-image\\media"  # example
+dir_abs_path="D:\\env\\project\\media"  # example
 
 # optional : set a different dir to save to
 # by default it will save to same dir of the pdf
-save_abs_path= dir_abs_path
+save_abs_path = dir_abs_path
 
-def convert(pdf_name,resolution=72):
+def convert(pdf_name, resolution=72):
     '''
     Saves each page from a specified PDF as a png image (pdf_name{page_index}.png)
     :param str pdf_name : PDF file name (in the same directory of this script)
     :param int resolution : resolution of the output png_s in DPI
     '''
-    src_pdf = PyPDF2.PdfFileReader(open(os.path.join(dir_abs_path,pdf_name+'.pdf'), "rb"))
+    src_pdf = PyPDF2.PdfFileReader(open(os.path.join(dir_abs_path,pdf_name), "rb"))
     for i in range(src_pdf.getNumPages()):
         temp=pdf_page_to_png(src_pdf,i,resolution)
         temp.save(filename=os.path.join(save_abs_path,pdf_name+str(i)+'.png'))
+    return src_pdf.getNumPages()
 
 def pdf_page_to_png(src_pdf, pagenum = 0, resolution = 72,):
     '''
@@ -80,4 +81,4 @@ def pdf_page_to_png(src_pdf, pagenum = 0, resolution = 72,):
     return img
 
 # Example of converting exam.pdf located at the same direcory
-convert('exam')   # NOTE : default resolution is 72 dpi
+# convert('exam')   # NOTE : default resolution is 72 dpi

@@ -7,24 +7,7 @@ from ..models.document import Document
 from ..models.page import Page
 from ..models.comment import DocumentComment
 from ..forms import DocumentUploadForm
-
-class OwnerMixin(object):
-	def get_queryset(self):
-		qs = super(OwnerMixin, self).get_queryset()
-		return qs.filter(owner=self.request.user)
-
-class OwnerEditMixin(object):
-	def form_valid(self, form):
-		form.instance.owner = self.request.user
-		return super(OwnerEditMixin, self).form_valid(form)
-
-class OwnerDocumentMixin(OwnerMixin, LoginRequiredMixin):
-	model = Document
-
-class OwnerDocumentEditMixin(OwnerDocumentMixin, OwnerEditMixin):
-	def get_success_url(self, **kwargs):
-		return reverse_lazy('project:document_detail', kwargs={'pk': self.object.id})
-	template_name = 'document/form.html'
+from mixins import OwnerMixin, OwnerEditMixin, OwnerDocumentMixin, OwnerDocumentEditMixin
 
 class ManageDocumentListView(OwnerDocumentMixin, ListView):
 	template_name = 'document/list.html'
