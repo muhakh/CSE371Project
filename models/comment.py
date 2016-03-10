@@ -14,7 +14,7 @@ class Comment(models.Model):
         return self.content
 
 class DocumentComment(Comment):
-    document = models.ForeignKey(Document)
+    document = models.ForeignKey(Document, related_name='dcomment')
 
 class PageComment(Comment):
     page = models.ForeignKey(Page, related_name='pcomment')

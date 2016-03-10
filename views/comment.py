@@ -1,26 +1,28 @@
-from ..models.comment import PageComment
+from ..models.comment import PageComment, DocumentComment
+from ..models.page import Page
+from ..models.document import Document
 from django.views.generic.edit import CreateView
-class AjaxableResponseMixin(object):
-    def form_invalid(self, form):
-        response = super(AjaxableResponseMixin, self).form_invalid(form)
-        if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
+from ..forms import PageCommentForm, DocumentCommentForm
+from django.core.urlresolvers import reverse_lazy
+
+class PageCommentCreate(CreateView):
+    model = PageComment
+    form_class = PageCommentForm
+    def get_success_url(self, **kwargs):
+		return reverse_lazy('project:page_detail', kwargs={'pk': self.object.page.id})
 
     def form_valid(self, form):
-        # We make sure to call the parent's form_valid() method because
-        # it might do some processing (in the case of CreateView, it will
-        # call form.save() for example).
-        response = super(AjaxableResponseMixin, self).form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-            }
-            return JsonResponse(data)
-        else:
-            return response
+        form.instance.owner = self.request.user
+        form.instance.page = Page.objects.get(id = self.kwargs['pk'])
+        return super(PageCommentCreate, self).form_valid(form)
 
-class PageCommentCreate(AjaxableResponseMixin, CreateView):
-    model = PageComment
-    fields = ['content']
+class DocumentCommentCreate(CreateView):
+    model = DocumentComment
+    form_class = DocumentCommentForm
+    def get_success_url(self, **kwargs):
+		return reverse_lazy('project:document_detail', kwargs={'pk': self.object.document.id})
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        form.instance.document = Document.objects.get(id = self.kwargs['pk'])
+        return super(DocumentCommentCreate, self).form_valid(form)

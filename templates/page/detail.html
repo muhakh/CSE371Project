@@ -4,17 +4,51 @@
 {{page.document}} | Page {{page.id}}
 {% endblock title %}
 {% block content %}
-<h2>Pages</h2>
-<div class="">
-  <img src={{page.image.url}} alt="Page {{page.id}}">
+<div class="container-fluid slide-container">
+  <div class="container-fluid slide-container">
+    <div class="col-xs-2 slide-nav text-center">
+      <a href="{% url 'project:page_detail' page.id|add:'-1' %}" class="btn btn-primary">&laquo; Previous</a>
+    </div>
+    <div class="col-xs-8">
+      <header>
+        <h1>{{page.document}}</h1>
+      </header>
+      <img src={{page.image.url}} alt="Page {{page.id}}" class="center-block img-responsive">
+    </div>
+    <div class="col-xs-2 slide-nav text-center">
+      <a href="{% url 'project:page_detail' page.id|add:'1' %}" class="btn btn-primary">Next &raquo;</a>
+    </div>
+  </div>
 </div>
-{% for comment in page.pcomment.all  %}
-<h3>{{comment.owner.first_name}} {{comment.owner.last_name}}</h3>
-<p>{{comment.content}}</p>
-{% endfor %}
+<div class="comments">
+  <div class="container">
+    {% for comment in page.pcomment.all  %}
+    <div class="single-comment">
+      <header>
+        <h3>
+          {% if comment.owner.first_name %}
+            {{comment.owner.first_name}} {{comment.owner.last_name}}
+          {% else %}
+              {{comment.owner}}
+          {% endif %}
+        </h3>
+      </header>
+      <p>
+        {{comment.content}}
+      </p>
+    </div>
+    {% endfor %}
+    <div class="add-comment">
+      <form method="post" action="{% url 'project:create_page_comment' page.id %}">
+        {% csrf_token %}
+        <div id="form-container" class="form-group">
+          <h3>Add a comment</h3>
+          <textarea class="form-control" name="content" id="content" placeholder="Add your comment"></textarea>
+        </div>
+        <input type="submit" value="Comment" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock content %}
-{% block scripts %}
-<script type="text/javascript">
-  $.ajax();
-</script>
-{% endblock scripts %}

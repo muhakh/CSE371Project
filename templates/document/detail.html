@@ -3,21 +3,57 @@
 {{document.title}}
 {% endblock title %}
 {% block content %}
-<h1>
-  {{document.title}}
-</h1>
-{% if view.pages %}
-<ul>
-  {% for page in view.pages %}
-  <li>
-    <a href="{% url 'project:page_detail' page.id %}">
-      <img src="{{page.image.url}}" alt="" />
-    </a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-  This Document has no pages
-{% endif %}
+<p class="text-center">
+  <a href="{% url 'project:manage_document_list' %}">My documents</a>
+</p>
+<div class="container-fluid slide-container">
+  <div class="col-md-10 col-xs-12 col-md-push-1">
+    <header>
+      <h1>{{document.title}}</h1>
+    </header>
+    <div class="row">
+      {% if view.pages %}
+      {% for page in view.pages %}
+      <div class="col-xs-6 col-md-3">
+        <a href="{% url 'project:page_detail' page.id %}" class="thumbnail">
+          <img src="{{page.image.url}}" class="img-responsive">
+        </a>
+      </div>
+      {% endfor %}
+      {% else %}
+        This Document has no pages
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="comments">
+  <div class="container">
+    {% for comment in document.dcomment.all  %}
+    <div class="single-comment">
+      <header>
+        <h3>
+          {% if comment.owner.first_name %}
+            {{comment.owner.first_name}} {{comment.owner.last_name}}
+          {% else %}
+              {{comment.owner}}
+          {% endif %}
+        </h3>
+      </header>
+      <p>
+        {{comment.content}}
+      </p>
+    </div>
+    {% endfor %}
+    <div class="add-comment">
+      <form method="post" action="{% url 'project:create_document_comment' document.id %}">
+        {% csrf_token %}
+        <div id="form-container" class="form-group">
+          <h3>Add a comment</h3>
+          <textarea class="form-control" name="content" id="content" placeholder="Add your comment"></textarea>
+        </div>
+        <input type="submit" value="Comment" class="btn btn-primary">
+      </form>
+    </div>  </div>
+</div>
 
 {% endblock content %}

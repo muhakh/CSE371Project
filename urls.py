@@ -2,10 +2,12 @@ from django.conf.urls import url
 from .views import document
 from .views.subject import CreateSubject , UpdateSubject, DeleteSubject, DetailSubject, ListSubject
 from .views.page import PageDetail
-from .views.comment import PageCommentCreate
+from .views.comment import PageCommentCreate, DocumentCommentCreate
+from .views.register import register
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url(r'^mine/$',	document.ManageDocumentListView.as_view(), name='manage_document_list'),
+	url(r'^accounts/profile/$',	document.ManageDocumentListView.as_view(), name='manage_document_list'),
 	url(r'^document/(?P<pk>\d+)/$', document.DocumentDetailView.as_view(), name='document_detail'),
 	url(r'^document/create/$', document.CreateDocumentView.as_view(), name='document_create'),
 	url(r'^document/(?P<pk>\d+)/edit/$', document.DocumentUpdateView.as_view(), name='document_edit'),
@@ -17,5 +19,6 @@ urlpatterns = [
     url(r'^subject/view/(?P<pk>\d+)/$', DetailSubject.as_view(), name='view_subject'),
 	url(r'^page/(?P<pk>\d+)/$', PageDetail.as_view(), name='page_detail'),
 	url(r'^page/(?P<pk>\d+)/comment/new/$', PageCommentCreate.as_view(), name='create_page_comment'),
-
+	url(r'^document/(?P<pk>\d+)/comment/new/$', DocumentCommentCreate.as_view(), name='create_document_comment'),
+	url(r'^accounts/register/$', register, name='register'),
 ]

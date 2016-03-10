@@ -20,7 +20,9 @@
   border-bottom: 1px solid #fff;
   height: 60px;
   margin-bottom: 5px; }
-
+.slide-container img{
+  background-color: #fff !important
+}
 .slide-container header h1 {
   display: inline-block;
   margin-top: 15px;

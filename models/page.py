@@ -10,7 +10,9 @@ class Page(models.Model):
     document = models.ForeignKey(Document)
     likes_count = models.PositiveIntegerField()
     def __str__(self):
-        return str(self.image)
+        return str(self.document) + " | Page no. " + str(self.id)
+    def url_as_list(self):
+        return self.image.split('.')
 @receiver(post_save, sender=Document)
 def document_post_save(sender, **kwargs):
 		page_i = convert(kwargs['instance'].file.path)

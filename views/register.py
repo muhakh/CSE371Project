@@ -1,4 +1,5 @@
-from .forms import  UserRegistrationForm
+from ..forms import  UserRegistrationForm
+from django.shortcuts import render
 
 def register(request):
 	if request.method == 'POST':

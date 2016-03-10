@@ -4,8 +4,8 @@ Log-in
 {% endblock title %}
 
 {% block content %}
-  <h1>Log-in</h1>
-  <div class="modules">
+  <div class="container text-center">
+    <h1>Log-in</h1>
     {% if form.errors %}
       <p>
         Your username and password didn't match. Please try again.
@@ -15,12 +15,14 @@ Log-in
     {% endif %}
     <div class="login-form">
       <form action="{% url 'login' %}" method="post">
+        <div class="form-group">
         {{form.as_p}}
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
         <p>
-          <input type="submit" value="Log-in">
+          <input type="submit" value="Log-in" class="btn btn-primary">
         </p>
+        </div>
       </form>
     </div>
   </div>
